@@ -12,6 +12,8 @@ name_label = QLabel("Nume:")
 input_name = QLineEdit()
 email_label = QLabel("Email:")
 input_email = QLineEdit()
+input_email.setEchoMode(QLineEdit.Password)
+
 button_1 = QPushButton("Salut")
 result_label = QLabel("")
 
@@ -19,7 +21,14 @@ def salutare():
     name = input_name.text()
     result_label.setText(f"Salut, {name}!")
 
+def text_modificat():
+    text = input_name.text()
+    print(f"Noul text: {text}")
+
 button_1.clicked.connect(salutare)
+input_name.returnPressed.connect(salutare)
+input_name.textChanged.connect(text_modificat)
+
 
 #Layouts:
 layout = QGridLayout()
